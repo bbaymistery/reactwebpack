@@ -23,7 +23,9 @@ module.exports = {
     'plugin:react-hooks/recommended',     // React Hooks kullanımı için zorunlu kurallar
     'plugin:@typescript-eslint/recommended', // TypeScript için önerilen kurallar
     'plugin:import/typescript',//
-    'plugin:jsx-a11y/recommended' 
+    'plugin:jsx-a11y/recommended' ,
+    'plugin:prettier/recommended',
+    'prettier'
 ],
 
   rules: {
