@@ -183,5 +183,35 @@ Bu bölümde, hatalı veya formatlanmamış kodların Git'e commit edilmesini en
 Bu sayede ekip çalışmasında kod kalitesi ve format standartları commit aşamasında garanti altına alınmış oldu.
 
 ---
+
+# Tutorial 08: Babel Runtime, CopyPlugin ve Bundle Analyzer
+
+Bu bölümde, projenin derleme sürecini iyileştiren, statik dosyaları yöneten ve paket boyutunu analiz etmemizi sağlayan araçları ekledik.
+
+## Yapılan Adımlar (Step-by-Step)
+
+### 1. Babel Runtime Yapılandırması (`@babel/plugin-transform-runtime`)
+Modern JavaScript özelliklerini (özellikle `async/await`) tarayıcı uyumlu hale getirirken kod tekrarını önlemek için şu adımlar atıldı:
+- `@babel/plugin-transform-runtime` ve `@babel/runtime` paketleri yüklendi.
+- `babel.config.js` içinde `regenerator: true` ayarı ile asenkron fonksiyon desteği optimize edildi.
+- **Neden?** Bu sayede projemizde her yerde güvenle `async/await` kullanabiliriz.
+
+### 2. Statik Dosyaların Kopyalanması (`copy-webpack-plugin`)
+Webpack tarafından işlenmeyen (import edilmeyen) ama çıktı klasöründe olması gereken dosyalar için:
+- `copy-webpack-plugin` eklendi.
+- `webpack.common.js` içinde yapılandırıldı.
+- **Neden?** Favicon, robots.txt veya doğrudan erişilmesi gereken diğer varlıkları `build` klasörüne taşımak için kullanılır.
+
+### 3. Paket Analizi (`webpack-bundle-analyzer`)
+Projenin üretim (production) sürümündeki dosya boyutlarını görselleştirmek için:
+- `webpack-bundle-analyzer` yüklendi.
+- `webpack.prod.js` içine eklendi.
+- **Neden?** Hangi kütüphanenin ne kadar yer kapladığını görerek performansı optimize etmemize yardımcı olur. `npm run build` komutundan sonra otomatik olarak bir analiz sayfası açar.
+
+### 4. Git Organizasyonu
+- Bu aşamadaki tüm geliştirmeler hem `tutorial-08` branch'ine hem de ana `main` branch'ine kaydedildi.
+
+---
 **Not:** Her adımın kodlarını ilgili branch üzerinden inceleyebilirsiniz.
+
 

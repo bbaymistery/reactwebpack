@@ -15,6 +15,12 @@ module.exports = (api) => {
     ],
     plugins: [
       isDevelopment && "react-refresh/babel",
+      //it lests us to use async await in our project
+      "@babel/plugin-transform-runtime",
+      {
+          "regenerator":true
+      }
+      
     ].filter(Boolean),
   };
 };

@@ -3,6 +3,8 @@ const path = require("path");
 
 // 'html-webpack-plugin', bundle edilen JavaScript dosyalarını otomatik olarak içine ekleyen bir HTML dosyası oluşturur.
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+// 'copy-webpack-plugin', paketlenmemiş dosyaları (örneğin resimler, fontlar) projeden çıktı klasörüne kopyalamak için kullanılır.
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     // entry: Uygulamanın giriş noktasını belirtir. Webpack buradan başlayarak tüm bağımlılıkları tarar.
@@ -68,6 +70,14 @@ module.exports = {
         new HtmlWebpackPlugin({
             // template: Hangi HTML dosyasının kalıp (şablon) olarak kullanılacağını belirtir.
             template: path.resolve(__dirname, "..", "./src/index.html")
-        })
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: "source",
+                    to: "dest",
+                },
+            ],
+        }),
     ]
 };
