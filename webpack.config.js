@@ -24,16 +24,31 @@ module.exports = {
                 // test: Hangi dosya uzantılarının bu kurala tabi olacağını belirten Regex (Düzenli İfade).
                 // /\.(ts|js)x?$/ -> .ts, .tsx, .js, .jsx dosyalarını kapsar.
                 test: /\.(ts|js)x?$/,
-                
+
                 // exclude: Bu klasördeki dosyaları işlememesi gerektiğini söyler (performans için).
                 exclude: /node_modules/,
-                
+
                 // use: Belirtilen dosyaları işlemek için hangi 'loader'ın (yükleyici) kullanılacağını belirtir.
                 // babel-loader: Modern JavaScript ve TypeScript kodlarını eski tarayıcıların anlayabileceği hale çevirir.
                 use: {
                     loader: 'babel-loader'
                 }
-            }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.(ico|gif|png|jpg|jpeg)$/i,
+                type: 'asset/resource'
+            },
+            {
+                test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+                type: 'asset/inline',
+            },
         ]
     },
 
@@ -41,7 +56,7 @@ module.exports = {
     output: {
         // path: Çıktı klasörünün yolu. Burada projenin ana dizinindeki 'build' klasörü hedefleniyor.
         path: path.resolve(__dirname, './build'),
-        
+
         // filename: Oluşturulacak ana JavaScript dosyasının adı.
         filename: 'bundle.js',
     },

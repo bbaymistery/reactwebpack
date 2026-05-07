@@ -32,4 +32,33 @@ Proje geçmişini düzenli tutmak için:
 - `main` branch'inin boş kalması sağlandı.
 
 ---
-**Not:** Bu proje öğrenme amaçlıdır ve her adım yeni bir branch üzerinde takip edilecektir.
+
+# Tutorial 02: CSS, Resimler ve Asset Yönetimi
+
+Bu bölümde, projemize CSS dosyalarını ve resim (JPG, SVG) gibi varlıkları (assets) nasıl dahil edeceğimizi öğrendik.
+
+## Yapılan Adımlar (Step-by-Step)
+
+### 1. Stil Dosyalarının Eklenmesi (CSS)
+Projenin görselliğini yönetmek için CSS desteği eklendi:
+- `css-loader` ve `style-loader` paketleri yüklendi.
+- `webpack.config.js` dosyasına `.css` dosyalarını işlemek için gerekli kurallar eklendi.
+- `styles.css` dosyası oluşturuldu ve `App.tsx` içine import edildi.
+
+### 2. Resim ve Varlık Yönetimi (Assets)
+Webpack 5'in yerleşik **Asset Modules** özelliği kullanılarak resim desteği sağlandı:
+- **`asset/resource`**: Büyük resim dosyaları (JPG, PNG) için kullanıldı. Bu dosyalar derleme sonrası `build` klasörüne kopyalanır.
+- **`asset/inline`**: SVG ve Font dosyaları için kullanıldı. Bu dosyalar Base64 formatında doğrudan JavaScript içine gömülür.
+
+### 3. TypeScript Tanımlamaları (`d.ts`)
+TypeScript'in `.jpg` ve `.svg` gibi dosya uzantılarını tanıması için `declarations.d.ts` dosyası oluşturuldu/güncellendi. Bu sayede `import IMAGE from './image.jpg'` şeklinde kullanım mümkün oldu.
+
+### 4. Hata Giderme ve İyileştirme
+- Webpack yapılandırmasındaki Regex (düzenli ifade) hataları giderildi (`\` yerine `|` kullanımı).
+- `App.tsx` bileşeni güncellenerek eklenen resimlerin ve stillerin sayfada gösterilmesi sağlandı.
+
+### 5. Git Branch (Dal) Organizasyonu
+- Bu aşamadaki tüm geliştirmeler `tutorial-02` branch'ine kaydedildi.
+
+---
+**Not:** Her adımın kodlarını ilgili branch üzerinden inceleyebilirsiniz.
