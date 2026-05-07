@@ -121,4 +121,67 @@ Geliştirme ortamı ayarlarında:
 - Bu aşamadaki tüm geliştirmeler `tutorial-04` branch'ine kaydedildi.
 
 ---
+
+# Tutorial 05: ESLint Yapılandırması
+
+Bu bölümde, projemizde kod kalitesini artırmak ve standartları korumak için ESLint kurulumunu gerçekleştirdik.
+
+## Yapılan Adımlar (Step-by-Step)
+
+### 1. ESLint ve Eklentilerin Kurulumu
+Modern bir yapılandırma için gerekli paketler yüklendi:
+- `eslint` (^9.0.0)
+- `eslint-plugin-react` ve `eslint-plugin-react-hooks`
+- `@typescript-eslint/parser` ve `@typescript-eslint/eslint-plugin`
+
+### 2. Yapılandırma Dosyası (`.eslintrc.js`)
+Proje kök dizininde detaylı Türkçe açıklamalar içeren bir `.eslintrc.js` dosyası oluşturuldu:
+- **`ecmaVersion: 'latest'`**: 2026 yılı standartlarına uygun en güncel JavaScript özellikleri etkinleştirildi.
+- **`parser`**: TypeScript dosyalarını analiz etmek için gerekli ayarlar yapıldı.
+- **`rules`**: React ve TypeScript için özel kurallar (kullanılmayan değişkenlerin hata vermesi gibi) tanımlandı.
+
+### 3. Lint Scripti
+`package.json` içine `"lint": "eslint --fix ..."` komutu eklenerek tüm projenin tek komutla denetlenmesi ve basit hataların otomatik düzeltilmesi sağlandı.
+
+---
+
+# Tutorial 06: Prettier ile Kod Formatlama
+
+Bu bölümde, kodun okunabilirliğini artırmak ve yazım stilini otomatize etmek için Prettier aracını kurduk.
+
+## Yapılan Adımlar (Step-by-Step)
+
+### 1. Prettier Kurulumu
+`prettier` paketi ve ESLint ile çakışmaları önlemek için `eslint-config-prettier` ve `eslint-plugin-prettier` paketleri yüklendi.
+
+### 2. Yapılandırma Dosyası (`.prettierrc.js`)
+Kodun nasıl formatlanacağını belirleyen ayarlar yapıldı:
+- Tek tırnak kullanımı, noktalı virgül zorunluluğu, satır uzunluğu gibi standartlar belirlendi.
+
+### 3. Format Scripti
+`package.json` içine `"format": "prettier --write ..."` komutu eklenerek dosyaların otomatik olarak düzenlenmesi sağlandı.
+
+---
+
+# Tutorial 07: Husky & lint-staged (Git Hooks)
+
+Bu bölümde, hatalı veya formatlanmamış kodların Git'e commit edilmesini engellemek için Husky ve lint-staged araçlarını entegre ettik.
+
+## Yapılan Adımlar (Step-by-Step)
+
+### 1. Husky ve lint-staged Kurulumu
+- `husky`: Git hook'larını (commit öncesi işlemler gibi) yönetmek için kullanıldı.
+- `lint-staged`: Sadece değişen (staged) dosyalar üzerinde işlem yaparak performansı artırmak için kullanıldı.
+
+### 2. Pre-commit Hook Yapılandırması
+`package.json` dosyasına eklenen ayarlar ile her `git commit` öncesinde:
+- Sadece değişen `.ts`, `.tsx`, `.js`, `.jsx` dosyalarında ESLint (`eslint --fix`) çalıştırılır.
+- Tüm değişen dosyalarda (CSS, MD dahil) Prettier (`prettier --write`) çalıştırılır.
+- Eğer lint hataları giderilemezse, commit işlemi otomatik olarak durdurulur.
+
+### 3. Otomasyon
+Bu sayede ekip çalışmasında kod kalitesi ve format standartları commit aşamasında garanti altına alınmış oldu.
+
+---
 **Not:** Her adımın kodlarını ilgili branch üzerinden inceleyebilirsiniz.
+
