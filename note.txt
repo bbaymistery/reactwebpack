@@ -1,0 +1,5 @@
+ts.config.js; > compiler focus on type checking not code transpalition
+.js i commentleri elave etmek ucun yazdimki koda baxanda oxunsun
+
+//https://www.youtube.com/watch?v=Elpu7CIuqjY&t=1009s
+//https://github.com/gopinav/React-TypeScript-Webpack-Starter/blob/master/tsconfig.json
