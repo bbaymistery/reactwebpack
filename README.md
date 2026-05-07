@@ -61,4 +61,34 @@ TypeScript'in `.jpg` ve `.svg` gibi dosya uzantılarını tanıması için `decl
 - Bu aşamadaki tüm geliştirmeler `tutorial-02` branch'ine kaydedildi.
 
 ---
+
+# Tutorial 03: Çevresel Değişkenler (Environment Variables)
+
+Bu bölümde, projemize farklı ortamlar (Geliştirme ve Üretim) için nasıl değişken tanımlayacağımızı ve Webpack yapılandırmasını nasıl organize edeceğimizi öğrendik.
+
+## Yapılan Adımlar (Step-by-Step)
+
+### 1. Webpack Yapılandırmasının Bölünmesi
+Webpack ayarlarını daha yönetilebilir kılmak için dosyalar ayrıldı:
+- `webpack.common.js`: Ortak ayarlar.
+- `webpack.dev.js`: Geliştirme (development) ortamına özel ayarlar.
+- `webpack.prod.js`: Üretim (production) ortamına özel ayarlar.
+- `webpack.config.js`: Ortama göre hangi dosyanın kullanılacağını seçen ana giriş dosyası.
+
+### 2. `webpack-merge` Kullanımı
+Ortak ayarlar ile ortama özel ayarları birleştirmek için `webpack-merge` kütüphanesi eklendi.
+
+### 3. Çevresel Değişkenlerin Tanımlanması (`DefinePlugin`)
+`webpack.DefinePlugin` kullanılarak uygulama içine global değişkenler enjekte edildi:
+- **Dev**: `process.env.name` -> "Elgun"
+- **Prod**: `process.env.name` -> "Eliko"
+- **Not**: String değerlerin doğru algılanması için `JSON.stringify()` kullanıldı.
+
+### 4. React İçinde Kullanım
+`App.tsx` dosyası güncellenerek `process.env.NODE_ENV` ve `process.env.name` değişkenlerinin ekranda gösterilmesi sağlandı.
+
+### 5. Git Branch (Dal) Organizasyonu
+- Bu aşamadaki tüm geliştirmeler `tutorial-03` branch'ine kaydedildi.
+
+---
 **Not:** Her adımın kodlarını ilgili branch üzerinden inceleyebilirsiniz.

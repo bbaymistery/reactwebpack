@@ -8,7 +8,7 @@ module.exports = {
     // entry: Uygulamanın giriş noktasını belirtir. Webpack buradan başlayarak tüm bağımlılıkları tarar.
     // __dirname: O anki dosyanın (webpack.config.js) bulunduğu dizinin tam yolunu verir.
     // path.resolve: Verilen yolları birleştirerek kesin (absolute) bir yol oluşturur.
-    entry: path.resolve(__dirname, "./src/index.tsx"),
+    entry: path.resolve(__dirname, "..", "./src/index.tsx"),
 
     // resolve: Webpack'in dosyaları nasıl çözümleyeceğini belirtir.
     resolve: {
@@ -55,21 +55,19 @@ module.exports = {
     // output: İşlenen dosyaların (bundle) nereye ve hangi isimle kaydedileceğini belirtir.
     output: {
         // path: Çıktı klasörünün yolu. Burada projenin ana dizinindeki 'build' klasörü hedefleniyor.
-        path: path.resolve(__dirname, './build'),
+        path: path.resolve(__dirname, "..", './build'),
 
         // filename: Oluşturulacak ana JavaScript dosyasının adı.
         filename: 'bundle.js',
     },
 
-    // mode: 'development' (geliştirme) veya 'production' (canlı ortam) seçenekleri.
-    // development modunda kodlar okunabilir kalır ve hata ayıklama kolaylaşır.
-    mode: "development",
+
 
     // plugins: Webpack'in temel işlevlerini genişleten ek araçlar.
     plugins: [
         new HtmlWebpackPlugin({
             // template: Hangi HTML dosyasının kalıp (şablon) olarak kullanılacağını belirtir.
-            template: path.resolve(__dirname, "./src/index.html")
+            template: path.resolve(__dirname, "..", "./src/index.html")
         })
     ]
 };
