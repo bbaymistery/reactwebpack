@@ -91,4 +91,34 @@ Ortak ayarlar ile ortama özel ayarları birleştirmek için `webpack-merge` kü
 - Bu aşamadaki tüm geliştirmeler `tutorial-3` branch'ine kaydedildi.
 
 ---
+
+# Tutorial 04: React Refresh & Hot Module Replacement (HMR)
+
+Bu bölümde, kodda yaptığımız değişikliklerin sayfa yenilenmeden yansıtılmasını ve bileşenlerin state'inin (durumunun) korunmasını sağlayan "Fast Refresh" özelliğini kurduk. Ayrıca geliştirme sunucusu ayarlarını optimize ettik.
+
+## Yapılan Adımlar (Step-by-Step)
+
+### 1. Gerekli Paketlerin Yüklenmesi
+React Refresh özelliğini Webpack ile kullanabilmek için şu paketler eklendi:
+- `@pmmmwh/react-refresh-webpack-plugin`
+- `react-refresh`
+
+### 2. Webpack Yapılandırması (`webpack.dev.js`)
+Geliştirme ortamı ayarlarında:
+- `devServer.hot: true` yapılarak HMR etkinleştirildi.
+- `devServer.open: true` eklenerek sunucu başladığında tarayıcının otomatik açılması sağlandı (Bu sayede `package.json` içindeki `--open` kaldırıldı).
+- `ReactRefreshWebpackPlugin` eklentiler listesine dahil edildi.
+
+### 3. Babel Yapılandırması (`babel.config.js`)
+`.babelrc` dosyası silinerek daha esnek olan `babel.config.js` yapısına geçildi. Burada `react-refresh/babel` eklentisi **sadece geliştirme modunda** (`process.env.NODE_ENV !== 'production'`) çalışacak şekilde ayarlandı. Bu değişiklik aynı zamanda TypeScript dosyalarındaki (`.tsx`) "Unexpected token" hatalarını da giderdi.
+
+### 4. Counter Bileşeni ve State Testi
+- `Counter.tsx` adında bir sayaç bileşeni oluşturuldu.
+- `App.tsx` içinde bu bileşen çağrıldı.
+- Sayaca tıklandığında artan sayının, kodda başka bir dosya değiştirildiğinde (App.tsx gibi) sıfırlanmadığı (state preservation) test edildi.
+
+### 5. Git Branch (Dal) Organizasyonu
+- Bu aşamadaki tüm geliştirmeler `tutorial-04` branch'ine kaydedildi.
+
+---
 **Not:** Her adımın kodlarını ilgili branch üzerinden inceleyebilirsiniz.
