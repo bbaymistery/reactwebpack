@@ -88,7 +88,7 @@ Ortak ayarlar ile ortama özel ayarları birleştirmek için `webpack-merge` kü
 `App.tsx` dosyası güncellenerek `process.env.NODE_ENV` ve `process.env.name` değişkenlerinin ekranda gösterilmesi sağlandı.
 
 ### 5. Git Branch (Dal) Organizasyonu
-- Bu aşamadaki tüm geliştirmeler `tutorial-03` branch'ine kaydedildi.
+- Bu aşamadaki tüm geliştirmeler `tutorial-3` branch'ine kaydedildi.
 
 ---
 **Not:** Her adımın kodlarını ilgili branch üzerinden inceleyebilirsiniz.
