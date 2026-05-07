@@ -1,21 +1,11 @@
-//to fix this we r installed css-loader and style-loader
 import "./styles.css";
+import IMAGE from './image.jpg'
+import SVG from './vercel.svg'
+import { Counter } from './Counter'
 
 
-import IMAGE from './image.jpg' //decloration.d.ts de jpg ni declare etdik ve webpacke yeni rule ekledik
-
-import SVG from './vercel.svg' //decloration.d.ts de jpg ni declare etdik ve webpacke yeni rule ekledik
-  import { Counter } from './Counter'
-
-/*
-Counta tikliyrq 1 2 3 olur sonra Text deyisirik ve otomatik text deyisir update olur ama count 0 olur 
-onu cozmeye calisdiq https://github.com/pmmmwh/react-refresh-webpack-plugin 
-
-webpack dev e ekledik yeni seyler
-
-ve package jsondaki openi kaldirib webpackdev.js e open acdik
-*/
 export const App = () => {
+  //const name="e"  >bunnan sonra npm run lint yaz goreceksenki yazacak name is aasigned never used
   return (
     <div style={{ backgroundColor: "black", color: "white", padding: "20px", minHeight: "100vh" }}>
       <h1>React TypeScript Webpack Starter</h1>
